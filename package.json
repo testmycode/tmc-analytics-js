@@ -1,0 +1,33 @@
+{
+  "name": "tmc-spyware",
+  "version": "0.0.0",
+  "description": "TMC analytics in Javascript",
+  "main": "lib/tmc-spyware.js",
+  "scripts": {
+    "lint": "./node_modules/eslint/bin/eslint.js"
+  },
+  "devDependencies": {
+    "babel": "6.3.13",
+    "babel-core": "6.1.18",
+    "babel-eslint": "5.0.0",
+    "babel-loader": "6.1.0",
+    "babel-plugin-add-module-exports": "0.1.2",
+    "babel-preset-es2015": "6.3.13",
+    "chai": "3.4.1",
+    "eslint": "^2.11.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-import-resolver-webpack": "^0.2.4",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.3.0",
+    "eslint-plugin-react": "^5.1.1",
+    "jszip": "^3.0.0",
+    "mocha": "2.3.4",
+    "webpack": "1.12.9",
+    "yargs": "3.32.0"
+  },
+  "author": "Henrik Nygren",
+  "license": "MIT",
+  "dependencies": {
+    "whatwg-fetch": "^1.0.0"
+  }
+}
