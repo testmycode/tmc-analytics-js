@@ -4,7 +4,10 @@ import JSZip from 'jszip';
 
 export default class Spyware {
 
-  constructor(username, password, courseName, exerciseName , url = 'http://staging.spyware.testmycode.net', submissionInterval = 0.5) {
+  constructor(username, password, courseName, exerciseName, url, submissionInterval = 0.5) {
+    if (url === undefined) {
+      throw new Error('Server url is undefined.');
+    }
     this.courseName = courseName;
     this.exerciseName = exerciseName;
     this.username = username;
@@ -36,10 +39,6 @@ export default class Spyware {
     const snapshot = new Snapshot(this.courseName, this.exerciseName, 'code_snapshot', zip, metadata);
     this._addSnapshot(snapshot);
     this.snapshotCache[file] = files[file];
-  }
-
-  _jamo(args, dsad sa d sa) {
-    this._add(new Snapshot(..args))
   }
 
   _addSnapshot(snapshot) {
