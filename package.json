@@ -2,12 +2,13 @@
   "name": "tmc-analytics",
   "version": "0.0.0",
   "description": "TMC analytics in Javascript",
-  "main": "src/index.js",
+  "main": "lib/tmc-spyware.js",
   "scripts": {
     "lint": "eslint src",
     "build": "webpack --mode=build",
     "dev": "webpack --progress --colors --watch --mode=dev",
-    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
+    "test-watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
+    "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js"
   },
   "devDependencies": {
     "babel": "6.3.13",
