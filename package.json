@@ -2,7 +2,7 @@
   "name": "tmc-analytics",
   "version": "0.0.0",
   "description": "TMC analytics in Javascript",
-  "main": "lib/tmc-spyware.js",
+  "main": "lib/tmc-analytics.min.js",
   "scripts": {
     "lint": "eslint src",
     "build": "webpack --mode=build",
@@ -29,12 +29,13 @@
     "jszip": "^3.0.0",
     "mocha": "2.3.4",
     "webpack": "1.12.9",
-    "yargs": "3.32.0"
+    "yargs": "3.32.0",
+    "babel-runtime": "^6.9.2",
+    "whatwg-fetch": "^1.0.0"
   },
   "author": "Henrik Nygren",
   "license": "MIT",
   "dependencies": {
-    "babel-runtime": "^6.9.2",
-    "whatwg-fetch": "^1.0.0"
+    "babel-runtime": "^6.9.2"
   }
 }

@@ -3,7 +3,7 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
 var env = require('yargs').argv.mode;
 
-var libraryName = 'tmc-spyware';
+var libraryName = 'tmc-analytics';
 
 var plugins = [], outputFile;
 
@@ -15,6 +15,9 @@ if (env === 'build') {
 }
 
 var config = {
+  node: {
+    global: false
+  },
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   output: {
@@ -29,7 +32,11 @@ var config = {
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel',
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules|bower_components)/,
+        query: {
+          presets: ['es2015'],
+          plugins: ['transform-runtime']
+        }
       },
       {
         test: /(\.jsx|\.js)$/,

@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import Snapshot from './snapshot.js';
 import JSZip from 'jszip';
 
