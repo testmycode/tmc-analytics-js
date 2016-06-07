@@ -1,5 +1,6 @@
 import Snapshot from './snapshot.js';
 import JSZip from 'jszip';
+import compress from './compress.js';
 
 export default class Spyware {
 
@@ -44,6 +45,11 @@ export default class Spyware {
     this.snapshots.push(snapshot);
   }
 
+  _ircEvent(data) {
+    const snapshot = new Snapshot(this.courseName, this.exerciseName, 'irc_message', data, {});
+    this._addSnapshot(snapshot);
+  }
+
   submit() {
     const old = this.snapshots;
     this.snapshots = [];
@@ -52,17 +58,16 @@ export default class Spyware {
       return;
     }
 
-    // JSON.stringify the body?
-    // TODO: Get a real server
-    fetch('http://gzip.josalmi.fi/', {
+    const headers = new Headers();
+    headers.append('X-Tmc-Version', 1);
+    headers.append('X-Tmc-Username', this.username);
+    headers.append('X-Tmc-Password', this.password);
+    fetch(this.url, {
       method: 'POST',
-      body: {
-        url: this.url,
-        data: JSON.stringify(old),
-        username: this.username,
-        password: this.password,
-      },
+      body: compress(old),
+      headers,
     });
+    // TODO: error handling (don't swallow errors)
   }
 
   _timedSubmit(interval) {
