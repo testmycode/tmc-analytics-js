@@ -2,7 +2,7 @@
   "name": "tmc-analytics",
   "version": "0.0.0",
   "description": "TMC analytics in Javascript",
-  "main": "lib/tmc-analytics.min.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src",
     "build": "webpack --mode=build",
