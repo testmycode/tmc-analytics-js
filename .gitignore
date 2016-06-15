@@ -29,3 +29,5 @@ node_modules
 lib
 
 build
+
+*.js.map
