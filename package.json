@@ -1,6 +1,6 @@
 {
   "name": "tmc-analytics",
-  "version": "0.0.0-alpha2",
+  "version": "0.0.0-alpha3",
   "description": "TMC analytics in Javascript",
   "files": ["build/"],
   "main": "build/index.js",
