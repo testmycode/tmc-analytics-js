@@ -1,12 +1,13 @@
 {
   "name": "tmc-analytics",
-  "version": "0.0.0-alpha",
+  "version": "0.0.0-alpha2",
   "description": "TMC analytics in Javascript",
+  "files": ["build/"],
   "main": "build/index.js",
   "scripts": {
     "lint": "eslint src",
     "build": "webpack --mode=build",
-    "prepublish": "mkdir -p build && babel src/index.js > build/index.js ",
+    "prepublish": "mkdir -p build && babel src/ -d build/",
     "dev": "webpack --progress --colors --watch --mode=dev",
     "test-watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
     "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js"
