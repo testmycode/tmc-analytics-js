@@ -2,7 +2,7 @@ import Snapshot from './snapshot.js';
 import JSZip from 'jszip';
 import compress from './compress.js';
 
-export default class Spyware {
+class Spyware {
 
   constructor(username, password, courseName, exerciseName, url, submissionInterval = 0.5) {
     if (url === undefined) {
@@ -103,3 +103,5 @@ export default class Spyware {
     this.saveActiveFile();
   }
 }
+
+module.exports = exports = Spyware;

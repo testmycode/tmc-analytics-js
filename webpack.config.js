@@ -3,29 +3,25 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
 var env = require('yargs').argv.mode;
 
-var libraryName = 'tmc-analytics';
+var libraryName = 'tmc';
 
 var plugins = [], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = libraryName + '.min.js';
+  outputFileExtension = '.min.js';
 } else {
-  outputFile = libraryName + '.js';
+  outputFileExtension = '.js';
 }
 
 var config = {
-  node: {
-    global: false
-  },
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   output: {
     path: __dirname + '/',
-    filename: outputFile,
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    filename: 'tmc-analytics' + outputFileExtension,
+    library: libraryName ,
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [
