@@ -28,6 +28,10 @@ class Spyware {
       this.fileCache[filename] = '';
     }
 
+    if (previous === contents) {
+      return;
+    }
+
     const patch = Snapshot.generatePatchData(this.filename, previous, contents, false);
     this._addSnapshot(new Snapshot(this.courseName, this.exerciseName, action, patch));
     this.fileCache[filename] = contents;
