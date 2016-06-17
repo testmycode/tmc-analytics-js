@@ -23,7 +23,7 @@ class Spyware {
 
     // File was created??
     if (this.snapshots[this.filename] === undefined) {
-      const patch = Snapshot.generatePatchData(this.filename, '', previous, true);
+      const patch = Snapshot.generatePatchData(this.filename, '', contents, true);
       this._addSnapshot(new Snapshot(this.courseName, this.exerciseName, 'text_insert', patch));
       this.fileCache[filename] = '';
     }
