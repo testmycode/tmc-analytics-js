@@ -22,7 +22,7 @@ class Spyware {
     const previous = this.fileCache[filename];
 
     // File was created??
-    if (this.snapshotCache[this.filename] === undefined) {
+    if (this.snapshots[this.filename] === undefined) {
       const patch = Snapshot.generatePatchData(this.filename, '', previous, true);
       this._addSnapshot(new Snapshot(this.courseName, this.exerciseName, 'text_insert', patch));
       this.fileCache[filename] = '';
@@ -42,7 +42,7 @@ class Spyware {
     const metadata = { cause, file };
     const snapshot = new Snapshot(this.courseName, this.exerciseName, 'code_snapshot', zip, metadata);
     this._addSnapshot(snapshot);
-    this.snapshotCache[file] = files[file];
+    this.snapshots[file] = files[file];
   }
 
   _addSnapshot(snapshot) {
@@ -96,14 +96,14 @@ class Spyware {
 
     const previous = this.exercise.getFile(this.filename).asText();
 
-    if (this.snapshotCache[this.filename] === undefined) {
+    if (this.snapshots[this.filename] === undefined) {
       const patch = Snapshot.generatePatchData(this.filename, '', previous, true);
       this._addSnapshot(new Snapshot(this.exercise, 'insertText', patch));
     }
 
     const patch = Snapshot.generatePatchData(this.filename, previous, this.editor.getValue(), false);
     this._addSnapshot(new Snapshot(this.exercise, e.action, patch));
-    this.snapshotCache[this.filename] = true;
+    this.snapshots[this.filename] = true;
     this.saveActiveFile();
   }
 }
