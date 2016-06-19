@@ -2,15 +2,20 @@
   "name": "tmc-analytics",
   "version": "0.0.0-alpha3",
   "description": "TMC analytics in Javascript",
-  "files": ["build/"],
+  "files": [
+    "build/"
+  ],
   "main": "build/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "webpack --mode=build",
     "prepublish": "mkdir -p build && babel src/ -d build/",
-    "dev": "webpack --progress --colors --watch --mode=dev",
+    "build": "webpack --env.prod -p",
+    "dev": "webpack --progress --watch --env.dev",
     "test-watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
-    "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js"
+    "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
+    "validate": "npm-run-all --parallel validate-webpack:*",
+    "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
+    "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod"
   },
   "devDependencies": {
     "babel": "6.3.13",
@@ -31,7 +36,9 @@
     "eslint-plugin-jsx-a11y": "^1.3.0",
     "eslint-plugin-react": "^5.1.1",
     "mocha": "2.3.4",
-    "webpack": "1.12.9",
+    "npm-run-all": "^2.2.0",
+    "webpack": "2.1.0-beta.13",
+    "webpack-validator": "^2.1.3",
     "yargs": "3.32.0"
   },
   "author": "Henrik Nygren",
