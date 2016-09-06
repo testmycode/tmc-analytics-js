@@ -4,14 +4,14 @@ import compress from './compress.js';
 
 class Spyware {
 
-  constructor(username, password, courseName, exerciseName, url, submissionInterval = 0.5) {
+  constructor(username, authorizationToken, courseName, exerciseName, url, submissionInterval = 0.5) {
     if (url === undefined) {
       throw new Error('Server url is undefined.');
     }
     this.courseName = courseName;
     this.exerciseName = exerciseName;
     this.username = username;
-    this.password = password;
+    this.authorizationToken = authorizationToken;
     this.url = url;
     this.snapshots = [];
     this.fileCache = {};
@@ -66,7 +66,7 @@ class Spyware {
     const headers = new Headers();
     headers.append('X-Tmc-Version', 1);
     headers.append('X-Tmc-Username', this.username);
-    headers.append('X-Tmc-Password', this.password);
+    headers.append('X-TMC-SESSION-ID', this.authorizationToken);
     fetch(this.url, {
       method: 'POST',
       body: compress(old),
